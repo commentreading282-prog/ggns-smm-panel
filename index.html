@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>GGNS SMM Panel</title>
+
+<style>
+
+/* BACKGROUND */
+body{
+margin:0;
+font-family:'Segoe UI',sans-serif;
+background: linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+height:100vh;
+color:white;
+}
+
+/* HEADER */
+header{
+text-align:center;
+padding:20px;
+font-size:28px;
+font-weight:bold;
+letter-spacing:2px;
+}
+
+/* GLASS CARD */
+.card{
+background: rgba(255,255,255,0.08);
+backdrop-filter: blur(10px);
+border-radius:18px;
+padding:20px;
+margin:20px;
+box-shadow:0 8px 32px rgba(0,0,0,.3);
+}
+
+/* WELCOME ANIMATION */
+.welcome{
+text-align:center;
+font-size:42px;
+font-weight:bold;
+margin-top:20px;
+animation: glow 2s infinite alternate;
+}
+
+@keyframes glow{
+from{letter-spacing:2px;}
+to{letter-spacing:8px;}
+}
+
+/* INPUT */
+input,select{
+width:100%;
+padding:12px;
+margin-top:10px;
+border-radius:10px;
+border:none;
+}
+
+/* BUTTON */
+button{
+width:100%;
+padding:12px;
+margin-top:12px;
+border:none;
+border-radius:12px;
+background:#00c6ff;
+background:linear-gradient(45deg,#00c6ff,#0072ff);
+color:white;
+font-size:16px;
+cursor:pointer;
+}
+
+button:hover{
+transform:scale(1.03);
+}
+
+/* SERVICES GRID */
+.services{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+gap:15px;
+}
+
+.service{
+background:rgba(255,255,255,0.1);
+padding:15px;
+border-radius:12px;
+text-align:center;
+}
+
+/* FLOATING BUTTONS */
+.float{
+position:fixed;
+right:20px;
+padding:15px;
+border-radius:50%;
+color:white;
+font-size:22px;
+cursor:pointer;
+}
+
+.whatsapp{
+bottom:90px;
+background:#25D366;
+}
+
+.instagram{
+bottom:20px;
+background:#E1306C;
+}
+
+.balance{
+font-size:30px;
+color:#00eaff;
+font-weight:bold;
+}
+
+.hidden{
+display:none;
+}
+
+</style>
+</head>
+
+<body>
+
+<header>🚀 GGNS SMM PANEL</header>
+
+<div class="welcome">
+WELCOME TO GGNS
+</div>
+
+<!-- LOGIN -->
+<div id="login" class="card">
+<h2>Login / Signup</h2>
+
+<input placeholder="Email">
+<input placeholder="Password" type="password">
+
+<button onclick="enter()">Enter Dashboard</button>
+</div>
+
+<!-- DASHBOARD -->
+<div id="dashboard" class="hidden">
+
+<div class="card">
+Wallet Balance
+<div class="balance">₹ <span id="bal">0</span></div>
+</div>
+
+<!-- SERVICES -->
+<div class="card">
+<h2>🔥 Services</h2>
+
+<div class="services">
+<div class="service">Followers ₹90</div>
+<div class="service">Views ₹3</div>
+<div class="service">Likes ₹30</div>
+<div class="service">Comments ₹30</div>
+<div class="service">Shares ₹20</div>
+</div>
+</div>
+
+<!-- CALCULATOR -->
+<div class="card">
+<h2>Price Calculator</h2>
+
+<select id="price">
+<option value="90">Followers</option>
+<option value="3">Views</option>
+<option value="30">Likes</option>
+<option value="30">Comments</option>
+<option value="20">Shares</option>
+</select>
+
+<input id="qty" placeholder="Quantity (1K)">
+
+<button onclick="calc()">Calculate</button>
+
+<h3 id="total"></h3>
+</div>
+
+<!-- ADD FUNDS -->
+<div class="card">
+<h2>Add Funds</h2>
+
+<p>Scan & Pay</p>
+
+<img src="qr.png" style="width:220px;border-radius:12px;">
+
+<input placeholder="Enter Amount">
+<input placeholder="Enter UTR Number">
+
+<label>Upload Screenshot</label>
+<input type="file">
+
+<button onclick="alert('Payment submitted! Admin will verify.')">
+Submit Payment
+</button>
+
+</div>
+
+</div>
+
+<!-- FLOATING BUTTONS -->
+
+<a href="https://wa.me/919113486149" target="_blank">
+<div class="float whatsapp">💬</div>
+</a>
+
+<a href="https://instagram.com/piyush_gupta_701" target="_blank">
+<div class="float instagram">📸</div>
+</a>
+
+<script>
+
+let balance=0;
+
+function enter(){
+document.getElementById("login").style.display="none";
+document.getElementById("dashboard").classList.remove("hidden");
+}
+
+function calc(){
+
+let price=document.getElementById("price").value;
+let qty=document.getElementById("qty").value;
+
+if(qty==""){
+alert("Enter quantity");
+return;
+}
+
+document.getElementById("total").innerText=
+"Total Price: ₹"+price*qty;
+
+}
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>My Wallet</title>
+
+<style>
+body{
+background:#020617;
+color:white;
+font-family:Arial;
+text-align:center;
+margin-top:150px;
+}
+
+input,button{
+padding:10px;
+margin:10px;
+border-radius:8px;
+border:none;
+}
+
+button{
+background:#3b82f6;
+color:white;
+}
+</style>
+
+</head>
+
+<body>
+
+<h1>Check Wallet Balance</h1>
+
+<input id="user" placeholder="Enter Mobile / Name">
+
+<button onclick="check()">Check Balance</button>
+
+<h2 id="balance"></h2>
+
+<script>
+
+function check(){
+
+let user=document.getElementById("user").value;
+
+let balance=localStorage.getItem(user);
+
+if(balance==null){
+balance=0;
+}
+
+document.getElementById("balance").innerHTML=
+"Your Balance: ₹"+balance;
+
+}
+
+</script>
+
+</body>
+</html>

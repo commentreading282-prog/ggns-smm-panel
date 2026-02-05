@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>GGNS SMM Panel - Admin</title>
+
+<style>
+body{
+    font-family: Arial;
+    background:#0f172a;
+    color:white;
+    text-align:center;
+}
+
+.box{
+    background:#1e293b;
+    padding:30px;
+    width:350px;
+    margin:100px auto;
+    border-radius:15px;
+}
+
+input,button{
+    width:90%;
+    padding:10px;
+    margin:10px;
+    border-radius:8px;
+    border:none;
+}
+
+button{
+    background:#22c55e;
+    color:white;
+    font-size:16px;
+    cursor:pointer;
+}
+</style>
+</head>
+
+<body>
+
+<div class="box">
+
+<h2>Admin Wallet Add</h2>
+
+<input type="text" id="user" placeholder="User Mobile / Name">
+<input type="number" id="amount" placeholder="Amount">
+
+<button onclick="addMoney()">Add Wallet</button>
+
+<h3 id="msg"></h3>
+
+</div>
+
+<script>
+
+function addMoney(){
+
+let user=document.getElementById("user").value;
+let amount=parseInt(document.getElementById("amount").value);
+
+if(!user || !amount){
+document.getElementById("msg").innerHTML="Enter details!";
+return;
+}
+
+let balance=localStorage.getItem(user);
+
+if(balance==null){
+balance=0;
+}
+
+balance=parseInt(balance)+amount;
+
+localStorage.setItem(user,balance);
+
+document.getElementById("msg").innerHTML=
+"✅ "+amount+" Rs added to "+user+" wallet";
+
+}
+</script>
+
+</body>
+</html>
